@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="850fb9bd-d664-4beb-be20-065058dbd9ac" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/logstash_input_jdbc_extra.conf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/logstash.conf" afterPath="$PROJECT_DIR$/logstash_input_jdbc.conf" />
-    </list>
+    <list default="true" id="850fb9bd-d664-4beb-be20-065058dbd9ac" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -205,7 +201,7 @@
       <option name="presentableId" value="Default" />
       <updated>1523349778343</updated>
       <workItem from="1523349780165" duration="1490000" />
-      <workItem from="1523415005702" duration="23447000" />
+      <workItem from="1523415005702" duration="23487000" />
     </task>
     <task id="LOCAL-00001" summary="logstash配置文件">
       <created>1523871101382</created>
@@ -221,15 +217,21 @@
       <option name="project" value="LOCAL" />
       <updated>1523873965850</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="logstash增量同步配置文件">
+      <created>1523945989076</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1523945989137</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24937000" />
+    <option name="totallyTimeSpent" value="24977000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -259,7 +261,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="logstash配置文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="logstash配置文件" />
+    <MESSAGE value="logstash增量同步配置文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="logstash增量同步配置文件" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
