@@ -1,0 +1,87 @@
+{
+  "template" : "*",
+  "version" : 50001,
+  "settings" : {
+    "index.refresh_interval" : "5s",
+    "index": {
+      "analysis": {
+        "analyzer": {
+          "by_smart": {
+            "type": "custom",
+            "tokenizer": "ik_smart",
+            "filter": ["by_tfr","by_sfr"],
+            "char_filter": ["by_cfr"]
+          },
+          "by_max_word": {
+            "type": "custom",
+            "tokenizer": "ik_max_word",
+            "filter": ["by_tfr","by_sfr"],
+            "char_filter": ["by_cfr"]
+          }
+        },
+        "filter": {
+          "by_tfr": {
+            "type": "stop",
+            "stopwords": [" "]
+          },
+          "by_sfr": {
+            "type": "synonym",
+            "synonyms_path": "analysis/synonyms.txt"
+          }
+        },
+        "char_filter": {
+          "by_cfr": {
+            "type": "mapping",
+            "mappings": ["| => |"]
+          }
+        }
+      }
+    }
+  },
+  "mappings" : {
+    "_default_" : {
+      "_all" : {
+        "enabled" : true,
+        "norms" : false
+      },
+      "dynamic_templates" : [
+        {
+          "message_field" : {
+            "path_match" : "message",
+            "match_mapping_type" : "string",
+            "mapping" : {
+              "type" : "text",
+              "norms" : false
+            }}
+        },
+        {
+          "string_fields" : {
+            "match" : "*",
+            "match_mapping_type" : "string",
+            "mapping" : {
+              "type" : "text",
+              "norms" : false,
+              "analyzer" : "by_max_word",
+              "search_analyzer":"by_smart",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "properties" : {
+        "@timestamp" : {
+          "type" : "date",
+          "include_in_all" : false
+        },
+        "@version" : {
+          "type" : "keyword",
+          "include_in_all" : false
+        }
+      }
+    }
+  }
+}
