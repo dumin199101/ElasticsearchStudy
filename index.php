@@ -224,7 +224,7 @@ $index['from'] = 200;
 $elastic->search($index);*/
 
 
-$params = [
+/*$params = [
     'index' => 'es_book',
     'type' => 'book_list',
     'body' => [
@@ -239,13 +239,74 @@ $params = [
 ];
 
 $response = $client->search($params);
-showbug($response);
+showbug($response);*/
 
 /*      相当于sql语句：
        select * from book_list where browse_count>=300
 and browse_count<2000  limit 0,5;  */
 
+// 查询高亮
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'match' => [
+                'title' => '歌曲榜单'
+            ]
+        ],
+        'highlight'=>[
+            'pre_tags' =>[
+                '<b style="color:red;">'
+            ],
+            'post_tags'=>[
+                '</b>'
+            ],
+            'fields'=>[
+                'title'=> new \stdClass()
+            ]
+        ]
+    ],
+    'size'=>100,
+    'from'=>0
+];
 
+$response = $client->search($params);
+showbug($response);*/
+
+// 排序
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'match' => [
+                'title' => '歌曲榜单'
+            ]
+        ],
+        'highlight'=>[
+            'pre_tags' =>[
+                '<b style="color:red;">'
+            ],
+            'post_tags'=>[
+                '</b>'
+            ],
+            'fields'=>[
+                'title'=> new \stdClass()
+            ]
+        ],
+        'sort'=>[
+            'cnt'=>[
+                'order'=>'desc'
+            ]
+        ]
+    ],
+    'size'=>100,
+    'from'=>0
+];
+
+$response = $client->search($params);
+showbug($response);*/
 
 
 echo "Completed...";
