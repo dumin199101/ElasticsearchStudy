@@ -17,11 +17,12 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="278" column="27" lean-forward="true" selection-start-line="278" selection-start-column="27" selection-end-line="278" selection-end-column="27" />
+            <state relative-caret-position="329">
+              <caret line="482" column="25" lean-forward="true" selection-start-line="481" selection-start-column="27" selection-end-line="482" selection-end-column="25" />
               <folding>
-                <marker date="1524479358294" expanded="true" signature="4964:4974" ph="..." />
-                <marker date="1524479358294" expanded="true" signature="5523:5533" ph="..." />
+                <marker date="1524737757768" expanded="true" signature="4964:4974" ph="..." />
+                <marker date="1524737757768" expanded="true" signature="5523:5533" ph="..." />
+                <marker date="1524737757768" expanded="true" signature="6336:6346" ph="..." />
               </folding>
             </state>
           </provider>
@@ -197,7 +198,7 @@
       <updated>1523349778343</updated>
       <workItem from="1523349780165" duration="1490000" />
       <workItem from="1523415005702" duration="23487000" />
-      <workItem from="1523946246193" duration="16509000" />
+      <workItem from="1523946246193" duration="37107000" />
     </task>
     <task id="LOCAL-00001" summary="logstash配置文件">
       <created>1523871101382</created>
@@ -231,7 +232,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41486000" />
+    <option name="totallyTimeSpent" value="62084000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
@@ -270,7 +271,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="logstash配置中文分词器" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -279,8 +282,9 @@
         <state relative-caret-position="3306">
           <caret line="174" column="6" lean-forward="true" selection-start-line="174" selection-start-column="6" selection-end-line="174" selection-end-column="6" />
           <folding>
-            <marker date="1524479358294" expanded="true" signature="4964:4974" ph="..." />
-            <marker date="1524479358294" expanded="true" signature="5523:5533" ph="..." />
+            <marker date="1524737757768" expanded="true" signature="4964:4974" ph="..." />
+            <marker date="1524737757768" expanded="true" signature="5523:5533" ph="..." />
+            <marker date="1524737757768" expanded="true" signature="6336:6346" ph="..." />
           </folding>
         </state>
       </provider>
@@ -306,8 +310,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1524479358294" expanded="true" signature="4964:4974" ph="..." />
-            <marker date="1524479358294" expanded="true" signature="5523:5533" ph="..." />
+            <marker date="1524737757768" expanded="true" signature="4964:4974" ph="..." />
+            <marker date="1524737757768" expanded="true" signature="5523:5533" ph="..." />
+            <marker date="1524737757768" expanded="true" signature="6336:6346" ph="..." />
           </folding>
         </state>
       </provider>
@@ -324,14 +329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
           <caret line="2" column="45" lean-forward="false" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logstash_synonyms.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
-          <caret line="77" column="34" lean-forward="true" selection-start-line="77" selection-start-column="34" selection-end-line="77" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -375,13 +372,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/logstash_synonyms.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="785">
+          <caret line="77" column="34" lean-forward="false" selection-start-line="77" selection-start-column="34" selection-end-line="77" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="278" column="27" lean-forward="true" selection-start-line="278" selection-start-column="27" selection-end-line="278" selection-end-column="27" />
+        <state relative-caret-position="329">
+          <caret line="482" column="25" lean-forward="true" selection-start-line="481" selection-start-column="27" selection-end-line="482" selection-end-column="25" />
           <folding>
-            <marker date="1524479358294" expanded="true" signature="4964:4974" ph="..." />
-            <marker date="1524479358294" expanded="true" signature="5523:5533" ph="..." />
+            <marker date="1524737757768" expanded="true" signature="4964:4974" ph="..." />
+            <marker date="1524737757768" expanded="true" signature="5523:5533" ph="..." />
+            <marker date="1524737757768" expanded="true" signature="6336:6346" ph="..." />
           </folding>
         </state>
       </provider>

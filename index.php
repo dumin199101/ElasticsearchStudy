@@ -309,4 +309,201 @@ $response = $client->search($params);
 showbug($response);*/
 
 
+//筛选：filtered被弃用
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'bool' => [
+                'filter'=>[
+                    'match'=>['over'=>'N']
+                ],
+                'must'=>[
+                    'match'=>['title'=>'歌曲榜单']
+                ]
+            ]
+        ],
+        'highlight'=>[
+            'pre_tags' =>[
+                '<b style="color:red;">'
+            ],
+            'post_tags'=>[
+                '</b>'
+            ],
+            'fields'=>[
+                'title'=> new \stdClass()
+            ]
+        ],
+        'sort'=>[
+            'cnt'=>[
+                'order'=>'desc'
+            ]
+        ]
+    ],
+    'size'=>100,
+    'from'=>0
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+//平均值、最值、求和、cardinality 求唯一值聚合统计
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'match' => [
+                'title' => '歌曲榜单'
+            ]
+        ],
+        'aggs'=>[
+            'avg_cnt'=>[
+                "avg"=>[
+                    "field"=>"cnt"
+                ]
+            ],
+            'sum_cnt'=>[
+                "sum"=>[
+                    "field"=>"cnt"
+                ]
+            ],
+            'max_cnt'=>[
+                "max"=>[
+                    "field"=>"cnt"
+                ]
+            ],
+            'min_cnt'=>[
+                "min"=>[
+                    "field"=>"cnt"
+                ]
+            ],
+            'create_time_count'=>[
+                "cardinality"=>[
+                    "field"=>"create_time"
+                ]
+            ],
+            'cnt_stats'=>[
+                "stats"=>[
+                    "field"=>"cnt"
+                ]
+            ],
+        ]
+    ]
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+
+//按照时间分组统计,使用terms聚合：
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'match' => [
+                'title' => '歌曲榜单'
+            ]
+        ],
+        'aggs'=>[
+            'create_time_group_by'=>[
+                'terms'=>[
+                    'field'=>'create_time',
+                    'size'=>20
+                ]
+            ]
+        ]
+    ],
+    'size'=>20,
+    'from'=>0
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+//区间聚合统计（把一个字段分区间统计）
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'match' => [
+                'title' => '歌曲榜单'
+            ]
+        ],
+        'aggs'=>[
+            'cnt_range'=>[
+                'range'=>[
+                    'field'=>'cnt',
+                    'ranges'=>[
+                        ["to"=>10000],
+                        ["from"=>10000,"to"=>100000],
+                        ["from"=>100000,"to"=>300000],
+                        ["from"=>300000,"to"=>500000],
+                        ["from"=>500000]
+                    ]
+                ]
+            ]
+        ]
+    ]
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+
+//日期范围聚合(过去10个月)
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'aggs'=>[
+            'range'=>[
+                'date_range'=>[
+                    'field'=>'create_time',
+                    'format'=>"yyyy-MM-dd",
+                    'ranges'=>[
+                        ["to"=>"now-10M/M"],
+                        ["from"=>"now-10M/M"]
+                    ]
+                ]
+            ]
+        ]
+    ]
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'aggs'=>[
+            'create_time'=>[
+                'date_histogram'=>[
+                    'field'=>'create_time',
+                    'format'=>"yyyy-MM-dd HH:mm:ss",
+                    'interval'=>'minute'
+                ]
+            ]
+        ]
+    ]
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+
+
+//analyzer不分词处理的term、terms查询
+
+
+
+// analyzer分词处理的match跟match_phrase,multi_match的区别
+
+
 echo "Completed...";
