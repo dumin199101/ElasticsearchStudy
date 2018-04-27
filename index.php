@@ -497,13 +497,290 @@ showbug($response);*/
 $response = $client->search($params);
 showbug($response);*/
 
-
-
-//analyzer不分词处理的term、terms查询
-
-
-
 // analyzer分词处理的match跟match_phrase,multi_match的区别
+/**
+ * match查询匹配就会进行分词:分为歌曲跟榜单所有包含这两个词中的一个或多个的文档就会被搜索出来
+ * match_phrase查询：精确匹配所有同时包含两个词，经测试两个词必须是紧邻的短语，但有个可调节因子slop，相隔多远的意思是为了让查询和文档匹配你需要移动词条多少次
+ * multi_match查询：如果我们希望两个字段进行匹配，其中一个字段有这个文档就满足
+ */
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'match' => [
+                'title' => '时空歌曲作者'
+//                'title' => '冬日温暖'
+            ]
+        ],
+        'highlight'=>[
+            'pre_tags' =>[
+                '<b style="color:red;">'
+            ],
+            'post_tags'=>[
+                '</b>'
+            ],
+            'fields'=>[
+                'title'=> new \stdClass()
+            ]
+        ]
+    ],
+    'size'=>100,
+    'from'=>0
+];
 
+$response = $client->search($params);
+showbug($response);*/
+
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'match_phrase' => [
+                'title' => [
+                    'query'=>'电影原声带',
+                    'slop'=>3
+                ]
+            ]
+        ],
+        'highlight'=>[
+            'pre_tags' =>[
+                '<b style="color:red;">'
+            ],
+            'post_tags'=>[
+                '</b>'
+            ],
+            'fields'=>[
+                'title'=> new \stdClass()
+            ]
+        ]
+    ],
+    'size'=>100,
+    'from'=>0
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'multi_match' => [
+                'query'=>'曲风',
+                'fields'=>[
+                    'title','dsc'
+                ]
+            ]
+        ],
+        'highlight'=>[
+            'pre_tags' =>[
+                '<b style="color:red;">'
+            ],
+            'post_tags'=>[
+                '</b>'
+            ],
+            'fields'=>[
+                'title'=> new \stdClass(),
+                'dsc'=>new \stdClass()
+            ]
+        ]
+    ],
+    'size'=>100,
+    'from'=>0
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+
+
+//analyzer不分词处理的term、terms查询过滤
+/**
+ * 使用term要确定的是这个字段是否“被分析”(analyzed)，默认的字符串是被分析的
+ * 经过ik分词器分词处理后，再对比关键词（一个整体：输入多个词的场景）发现关键词未在分词中的话就找不到。
+ * 经过测试不建议使用term，使用match_phrase代替
+ * terms可用于指定多个值进行过滤:类似于match中输入多个值自动分词
+ */
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'term' => [
+                'title' => '时空'
+            ]
+        ],
+        'highlight'=>[
+            'pre_tags' =>[
+                '<b style="color:red;">'
+            ],
+            'post_tags'=>[
+                '</b>'
+            ],
+            'fields'=>[
+                'title'=> new \stdClass()
+            ]
+        ]
+    ],
+    'size'=>100,
+    'from'=>0
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'terms' => [
+                'title' => ['时空','歌曲','作者']
+            ]
+        ],
+        'highlight'=>[
+            'pre_tags' =>[
+                '<b style="color:red;">'
+            ],
+            'post_tags'=>[
+                '</b>'
+            ],
+            'fields'=>[
+                'title'=> new \stdClass()
+            ]
+        ]
+    ],
+    'size'=>100,
+    'from'=>0
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+//fuzzy模糊查询、前缀查询、通配符及正则表达式查询
+/**
+ * 模糊查询一般作为模糊建议使用
+ * 经测试前缀、通配符、正则对中文无效
+ */
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'fuzzy' => [
+                'title'=>[
+                    'value' => '时间',
+                    'fuzziness'=>1, //编辑距离
+                    'max_expansions'=>5, //返回最大的模糊数量
+//                    'prefix_length'=>3 //不能被模糊的初识字符数
+                ]
+            ]
+        ],
+        'highlight'=>[
+            'pre_tags' =>[
+                '<b style="color:red;">'
+            ],
+            'post_tags'=>[
+                '</b>'
+            ],
+            'fields'=>[
+                'title'=> new \stdClass()
+            ]
+        ]
+    ],
+    'size'=>100,
+    'from'=>0
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'regexp' => [
+                 'title'=>'电影.*声带'
+            ]
+        ],
+        'highlight'=>[
+            'pre_tags' =>[
+                '<b style="color:red;">'
+            ],
+            'post_tags'=>[
+                '</b>'
+            ],
+            'fields'=>[
+                'title'=> new \stdClass()
+            ]
+        ]
+    ],
+    'size'=>100,
+    'from'=>0
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'wildcard' => [
+                'title'=>'电影?声*'
+            ]
+        ],
+        'highlight'=>[
+            'pre_tags' =>[
+                '<b style="color:red;">'
+            ],
+            'post_tags'=>[
+                '</b>'
+            ],
+            'fields'=>[
+                'title'=> new \stdClass()
+            ]
+        ]
+    ],
+    'size'=>100,
+    'from'=>0
+];
+
+$response = $client->search($params);
+showbug($response);*/
+
+/*$params = [
+    'index' => 'songs_ik5',
+    'type' => 'playlist',
+    'body' => [
+        'query' => [
+            'prefix' => [
+                'title'=>'电影'
+            ]
+        ],
+        'highlight'=>[
+            'pre_tags' =>[
+                '<b style="color:red;">'
+            ],
+            'post_tags'=>[
+                '</b>'
+            ],
+            'fields'=>[
+                'title'=> new \stdClass()
+            ]
+        ]
+    ],
+    'size'=>100,
+    'from'=>0
+];
+
+$response = $client->search($params);
+showbug($response);*/
 
 echo "Completed...";
